@@ -156,3 +156,15 @@ You can download dataset from http://saliencydetection.net/duts/#outline-contain
 </code>
 
 * The step is accumulated step from epoch 0.
+
+===========================
+
+Python:
+* pip install tqdm
+* pip install tensorboardX==1.1
+
+Model:
+* Download pre-trained model 36epo_383000step.ckpt from https://drive.google.com/drive/folders/1A9qXGuvtqwSY0mEc5hbC-4b7ix8fLyfA and put it in ./model
+
+Command line:
+* python image_test.py --model_dir ./model/36epo_383000step.ckpt --dataset ./input --cuda cpu --batch_size 1 --save_dir ./result

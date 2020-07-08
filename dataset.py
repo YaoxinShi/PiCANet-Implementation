@@ -156,6 +156,7 @@ class CustomDataset(data.Dataset):
 
     def __getitem__(self, item):
         img_name = '{}/{}'.format(self.root_dir, self.image_list[item])
+        print(img_name)
         img = Image.open(img_name)
         sample = img.convert('RGB')
         sample = self.transform(sample)

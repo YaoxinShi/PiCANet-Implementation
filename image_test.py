@@ -54,5 +54,11 @@ if __name__ == '__main__':
             for j in range(img.shape[0]):
                 torchvision.utils.save_image(img[j], os.path.join(args.save_dir, 'img', '{}_{}.jpg'.format(i, j)))
                 torchvision.utils.save_image(pred[j], os.path.join(args.save_dir, 'mask', '{}_{}.jpg'.format(i, j)))
+                from torchvision import transforms
+                import imageio
+                from PIL import Image
+                im = transforms.ToPILImage()(pred[j]).convert("RGB")
+                im = im.resize((960, 540), Image.BILINEAR)
+                imageio.imwrite(os.path.join(args.save_dir, 'mask', '{}_{}.png'.format(i, j)), im)
     if args.logdir is not None:
         writer.close()
